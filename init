@@ -9,6 +9,8 @@ WEBMIN_LDAP_ADMINISTRATORS="${WEBMIN_LDAP_ADMINISTRATORS:-admin1:password1,admin
 # enable ssl
 WEBMIN_SSL="${WEBMIN_SSL:-1}"
 
+REFERERS="${REFERERS:-example.com}"
+
 # webmin ldap server settings
 LDAP_URI="${LDAP_URI:-ldap://ldap.example.com}"
 LDAP_BINDDN="${LDAP_BINDDN:-cn=admin,dc=example,dc=com}"
@@ -74,6 +76,9 @@ ldapuseradmin_set "md5" "4"
 
 # webmin ssl configuration
 webmin_config_set "/etc/webmin/miniserv.conf" "ssl" "$WEBMIN_SSL"
+
+
+webmin_config_set "/etc/webmin/config" "referers" "$REFERERS"
 
 # create ldap administrator users which only have permissions to access the
 # ldap-useradmin module and nothing else
